@@ -55,3 +55,23 @@ kubectl port-forward svc/hello-world-service 8080:80
 Now, open any browser and search `localhost:8080`
 
 
+
+## Cleanup Instructions
+
+### To clean the existing architecture
+Delete the deployment and the service individually as per best practice
+```
+kubectl delete deployment hello-world
+kubectl delete service hello-world-service
+```
+
+Now, delete the entire Kubernetes cluster
+```
+kind delete cluster --name hello-world-cluster
+```
+To clean up the docker image
+```
+docker rmi hello-world-nginx
+```
+
+These cleanup instructions will help ensure that users don't leave unused resources running on their systems, which is especially important for local development environments where resources are limited.
